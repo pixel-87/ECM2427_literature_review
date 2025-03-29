@@ -1,32 +1,72 @@
-\documentclass[12pt, a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{geometry}
-\usepackage{cite}
-\geometry{a4paper, margin=1in}
+\documentclass[conference]{IEEEtran}  % Don't change
 
-\title{Literature Review: [Your Topic]}
-\author{[Your Name]}
-\date{\today}
+% You can add external packages
+\usepackage{cite} % This is a package that modifies the way citations are handled and formatted, particularly useful for those writing academic or research papers where references are a key component.
+\usepackage{amsmath,amssymb,amsfonts}  % packages provided by the American Mathematical Society (AMS), each offering various features particularly useful for typesetting mathematical content. 
+\usepackage{algorithmic} % This package is used for typesetting algorithms
+\usepackage{graphicx} % It adds support for including graphics in the document
+\usepackage{textcomp} % Extra support for the text companion fonts
+\usepackage{xcolor} % support for colored text and colored boxes in LaTeX documents.
+
+% Add more external upackages if you need
+% \usepackage{}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}   % Don't change
+%\def\BibTeX defines a new command named \BibTeX
+
+% add a new theorem if you need:
+% \newtheorem{theorem}{Theorem}
+
 
 \begin{document}
-\maketitle
 
-\section{Introduction}
-% Introduction content
+\title{ECM2427: Literature Review on [ARM vs x86 Architectures in Cloud Computing]}
 
-\section{Background and Related Work}
-% Related work content
 
-\section{Analysis and Synthesis}
-% Analysis content
+\author{\IEEEauthorblockN{Anonymised Author} % Don't change - don't add you name, email, SID - any identifiable information here
+}
 
-\section{Conclusion}
-% Conclusion content
+% to generate the title of the paper
+\maketitle  % Don't change
 
-\bibliographystyle{IEEEtran} % Or other appropriate style
-\bibliography{references}
+
+\section{Introduction} % Don't change
+
+Cloud computing has become an essential paradigm in modern computing and the digital age.
+Cloud computing relies heavily on high-performance computing (HPC) systems within data centres around the world.
+Traditionally, servers in these data centres have utilised the x86 architecture. However, with ever-increasing demands for scalability, energy efficiency, and cost-effectiveness, a shift away from x86 is being driven.
+
+This literature review seeks to examine the growing role of ARM-based processors in cloud computing, an architecture initially prominent in embedded systems and mobile devices, which is now increasingly seen in place of x86 processors.
+The review will analyse the key factors driving this shift to ARM-based processors, including their performance characteristics, advantages in energy efficiency, and challenges related to software support.
+To provide context, it will also draw parallels with previous architectural transitions in computing, most notably the transition from 32-bit to 64-bit computing.
+
+\section{Review} % Don't change
+
+My review structure is [\textbf{Thematic}]
+\subsection{ARM Architecture and Cloud Adoption}
+What fundamentally makes ARM different to x86 is their instruction set architectures (ISAs).
+The x86 architecture uses a Complex Instruction Set Computing (CISC) design, distinguished by its ability to execute complex instructions.
+This design aims to complete complex tasks in one instruction rather than needing multiple. 
+In contrast ARM employs a Reduced Instruction Set Computing (RISC) architecture, this focuses on executing simpler instructions, emphasising power efficiency over clock speed. \cite{ARM_RISC_vs_x86_SISC}
+It was found that only 20\% of instructions defined in CISC were commonly used, with 80\% being rarely used, therefore RISC became a popular choice. \cite{instructions_CISC_vs_RISC}
+
+ARM established itself as a great architecture for mobile and ubiquitous devices, due to it's power efficiency, and that these devices didn't need as much processing power as a consumer desktop or laptop.
+This emphasis on efficiency allowed for an extended battery life, compact design, and a cooler device. \cite{furber1988advantages}
+However, ARM's applicability has expanded significantly beyond its origins in mobile and embedded systems. Driven by the increasing demands for scalable and energy-efficient computing solutions in data centres \cite{ARM_to_server}, the ARM architecture is increasingly penetrating the server domain and assuming a growing role in cloud computing. Cloud providers are drawn to ARM's potential to reduce operational costs associated with power consumption and cooling, particularly in hyperscale data centres where energy efficiency is paramount \cite{datacentre_energy}. 
+
+\subsection{Performance Considerations}
+\subsection{Energy Efficiency and Sustainability}
+\subsection{Software Ecosystem and Compatibility}
+
+
+\section{Conclusion} % Don't change
+Add your conclusion here
+
+% This command sets the style in which the bibliography is formatted. You must use IEEE reference style
+\bibliographystyle{ieeetr} % Do not change, it gives you the IEEE bibliography styles.
+
+% You should add your references in the file "reference.bib"
+\bibliography{reference.bib} % Do not change
 
 \end{document}

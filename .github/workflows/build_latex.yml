@@ -1,6 +1,7 @@
-name: Build LaTeX document
-on: [push]
+name: Compile LaTeX Document
 
+on: [push]
+    
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -14,7 +15,7 @@ jobs:
           root_file: main.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           
-      - name: Upload PDF file
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF

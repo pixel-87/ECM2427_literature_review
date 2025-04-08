@@ -1,7 +1,11 @@
 name: Compile LaTeX Document
 
 on: [push]
-    
+
+# Sets permissions of the GITHUB_TOKEN for this workflow
+permissions:
+  contents: write
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -20,3 +24,9 @@ jobs:
         with:
           name: PDF
           path: main.pdf
+          
+      - name: Commit PDF to repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update compiled PDF"
+          file_pattern: "*.pdf"

@@ -1,37 +1,28 @@
-name: Build LaTeX document
-on: [push]
+name: Build LaTeX Document # A name for your workflow
+
+on:
+  push:
+    branches: [ main ] # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches: [ main ] # Trigger the workflow on pull requests targeting the main branch
 
 jobs:
-  build_latex:
-    runs-on: ubuntu-latest
+  build:
+    name: Build LaTeX
+    runs-on: ubuntu-latest # The runner environment to execute the job
+
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Checks out your repository code
 
-      - name: Ensure required files are present
-        run: |
-          if [ ! -f main.tex ]; then
-            echo "main.tex not found!"
-            exit 1
-          fi
-          if [ ! -f reference.bib ]; then
-            echo "reference.bib not found!"
-            exit 1
-          fi  # Add this line to close the second if block
-
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v3 # Use the GitHub Action for LaTeX
         with:
-          root_file: main.tex
-          extra_system_packages: biber  # Ensure biber is installed if using biblatex
+          root_file: main.tex # Replace with the path to your main .tex file
+          args: -pdf # Optional arguments for latexmk (e.g., create a PDF)
 
-      - name: Debug LaTeX log
-        if: failure()
-        run: cat main.log
-
-      - name: Upload PDF file
-        if: success()
-        uses: actions/upload-artifact@v4
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: PDF
-          path: main.pdf
+          name: latex-output
+          path: output.pdf # Adjust the path based on your LaTeX output

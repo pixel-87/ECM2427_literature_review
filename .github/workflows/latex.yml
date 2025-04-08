@@ -6,10 +6,20 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+        
+      - name: Ensure reference.bib is present
+        run: |
+          if [ ! -f reference.bib ]; then
+            echo "reference.bib not found!"
+            exit 1
+          fi
+        
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
+          extra_system_packages: biber  # Ensure biber is installed if using biblatex
+      
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
